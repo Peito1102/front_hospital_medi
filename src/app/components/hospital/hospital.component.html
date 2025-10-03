@@ -1,0 +1,18 @@
+<hr>
+
+<div class="hospitales">
+    <h2>Listado de hospitales</h2>
+
+    <ul>
+        @for (hospital of hospitales; track hospital) {
+            <li>{{hospital}}</li>
+        } @empty {
+            <li>No hay elementos para mostrar</li>
+        }
+    </ul>
+
+    <h4>{{nuevoHospital}}</h4>
+
+    <input [(ngModel)]="nuevoHospital" type="text" placeholder="Agrega un nuevo hospital">
+    <button (click)="addHospital()">Añadir</button>
+</div>
