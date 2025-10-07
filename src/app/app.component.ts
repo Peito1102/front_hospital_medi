@@ -5,7 +5,7 @@ import { HospitalComponent } from './components/hospital/hospital.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink,HospitalComponent],
+  imports: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
