@@ -41,7 +41,7 @@
 
 .login-box .user-box input {
   width: 100%;
-  padding: 12px 0 10px 0; /* más simétrico */
+  padding: 12px 0 10px 0;
   font-size: 16px;
   color: #e0f7fa;
   border: none;
@@ -52,7 +52,7 @@
 
 .login-box .user-box label {
   position: absolute;
-  top: 12px; /* ajustado para alinearse bien */
+  top: 12px;
   left: 0;
   font-size: 16px;
   color: #aaa;
@@ -60,34 +60,36 @@
   transition: 0.3s ease;
 }
 
-/* Cuando el input está enfocado o tiene texto */
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
-  top: -12px; /* se mueve solo un poco arriba */
+  top: -12px;
   font-size: 12px;
   color: #03e9f4;
 }
 
-
-/* Botón */
-.login-box form a {
+/* Botón de Submit */
+.login-box .animated-button {
   position: relative;
   display: inline-block;
   padding: 12px 24px;
+  margin-top: 40px;
   color: #03e9f4;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 3px;
   overflow: hidden;
-  transition: 0.5s;
-  border: 1px solid #03e9f4;
+  letter-spacing: 3px;
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: 6px;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
-.login-box a:hover {
+.login-box .animated-button:hover {
   background: #03e9f4;
-  color: #141e30;
+  color: #fff;
   border-radius: 6px;
   box-shadow: 0 0 10px #03e9f4,
               0 0 30px #03e9f4,
@@ -95,12 +97,12 @@
 }
 
 /* Efectos animados del botón */
-.login-box a span {
+.login-box .animated-button span {
   position: absolute;
   display: block;
 }
 
-.login-box a span:nth-child(1) {
+.login-box .animated-button span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -111,10 +113,10 @@
 
 @keyframes btn-anim1 {
   0% { left: -100%; }
-  50%,100% { left: 100%; }
+  50%, 100% { left: 100%; }
 }
 
-.login-box a span:nth-child(2) {
+.login-box .animated-button span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -126,10 +128,10 @@
 
 @keyframes btn-anim2 {
   0% { top: -100%; }
-  50%,100% { top: 100%; }
+  50%, 100% { top: 100%; }
 }
 
-.login-box a span:nth-child(3) {
+.login-box .animated-button span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -141,10 +143,10 @@
 
 @keyframes btn-anim3 {
   0% { right: -100%; }
-  50%,100% { right: 100%; }
+  50%, 100% { right: 100%; }
 }
 
-.login-box a span:nth-child(4) {
+.login-box .animated-button span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
@@ -156,19 +158,33 @@
 
 @keyframes btn-anim4 {
   0% { bottom: -100%; }
-  50%,100% { bottom: 100%; }
+  50%, 100% { bottom: 100%; }
 }
 
-/* Si el navegador autocompleta el campo */
+/* Soporte para Autocompletar del navegador */
 .login-box .user-box input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #141e30 inset;
+  -webkit-box-shadow: 0 0 0 1000px #141e30 inset;
   -webkit-text-fill-color: #e0f7fa;
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Fuerza el label a moverse hacia arriba cuando hay autofill */
 .login-box .user-box input:-webkit-autofill ~ label {
   top: -12px;
   font-size: 12px;
   color: #03e9f4;
+}
+
+/* Enlace de Registro */
+.login-box .register-link p {
+  color: #aaa;
+}
+
+.login-box .register-link a {
+  all: unset;
+  color: #03e9f4;
+  cursor: pointer;
+}
+
+.login-box .register-link a:hover {
+  text-decoration: underline;
 }

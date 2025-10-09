@@ -3,7 +3,7 @@
   <div class="cuerpo">
     <div class="login-box">
       <h2>Login</h2>
-      <form>
+      <form (ngSubmit)="onLogin()">
         <div class="user-box">
           <input type="text" name="" required="">
           <label>Username</label>
@@ -12,14 +12,17 @@
           <input type="password" name="" required="">
           <label>Password</label>
         </div>
-        <a href="#">
+        <button type="submit" class="animated-button">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           Submit
-        </a>
+        </button>
       </form>
+      <div class="register-link">
+        <p>¿No tienes una cuenta? <a routerLink="/register">Regístrate</a></p>
+      </div>
     </div>
   </div>
 </div>
