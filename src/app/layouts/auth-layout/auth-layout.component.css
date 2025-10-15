@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+app-header {
+  flex-shrink: 0; 
+}
+
+/* El router-outlet es donde se carga tu login */
+.content {
+  flex-grow: 1; /* ¡La clave! Hace que esta área crezca para ocupar todo el espacio sobrante */
+  display: block; 
+}
