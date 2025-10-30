@@ -5,12 +5,13 @@
                 <span>MediCare</span>
             </div>
             
-            <div class="nav-right">
+            <div *ngIf="isLoggedIn" class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
-                <a href="#" class="cta-button">Cerrar Sesión</a>
+
+                <a *ngIf="isLoggedIn" (click)="logout()" class="cta-button">Cerrar sesión</a>
             </div>
         </div>
     </nav>
