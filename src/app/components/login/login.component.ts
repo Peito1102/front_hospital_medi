@@ -1,5 +1,5 @@
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { Component} from '@angular/core';
+import { Component, ViewEncapsulation} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterModule, HttpClientModule, FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 
 export class LoginComponent {

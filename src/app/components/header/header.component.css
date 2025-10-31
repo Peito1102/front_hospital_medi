@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 /* ESTILOS DE LA BARRA DE NAVEGACIÓN */
-.navbar {
+.app-navbar {
     background-color: #1E293B; 
     padding: 0.5rem 2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
