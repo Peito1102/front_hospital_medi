@@ -188,3 +188,7 @@
 .login-box .register-link a:hover {
   text-decoration: underline;
 }
+
+.error {
+  color: rgb(241, 63, 63);
+}
