@@ -1,0 +1,82 @@
+/* Estilo para las etiquetas (Labels) 
+   Las hace un poco más grandes y oscuras, como en la imagen.
+*/
+.form-label-custom {
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 0.25rem;
+  display: block;
+  font-size: 1.1rem; /* Tamaño de la etiqueta */
+}
+
+/* El "contenedor" mágico para cada campo.
+  Le ponemos el borde inferior.
+*/
+.form-field-wrapper {
+  border-bottom: 1px solid #ced4da; /* Borde gris estándar */
+  transition: border-color 0.15s ease-in-out;
+  padding: 0;
+}
+
+/* Cuando el usuario hace clic DENTRO del contenedor 
+  (en el input, el select, o el botón)
+*/
+.form-field-wrapper:focus-within {
+  border-bottom: 2px solid #0d6efd; /* Borde azul de Bootstrap y más grueso */
+  /* Esto compensa el píxel extra de grosor del borde 
+    para que el layout no "salte"
+  */
+  margin-bottom: -1px; 
+}
+
+/* REGLA CLAVE:
+  A todos los componentes de Bootstrap DENTRO de nuestro contenedor
+  les quitamos el fondo, los bordes y las sombras.
+*/
+.form-field-wrapper .form-control,
+.form-field-wrapper .form-select,
+.form-field-wrapper .input-group-text,
+.form-field-wrapper .btn {
+  border: none;
+  background-color: transparent !important;
+  box-shadow: none !important; /* Quita el brillo azul de 'focus' */
+  padding-left: 0; /* Alinea el placeholder a la izquierda */
+}
+
+/* Hacemos el placeholder un poco más claro/pequeño
+  para que coincida con la imagen.
+*/
+.form-field-wrapper .form-control::placeholder {
+  color: #6c757d; /* color 'text-muted' */
+  font-size: 0.95rem;
+}
+
+/* Ajustes para los 'input-group' (campos con prefijo o botón)
+*/
+
+/* Añade un poco de espacio al input si está después
+  de un 'select' o un 'span'
+*/
+.form-field-wrapper .input-group .form-control {
+  padding-left: 0.75rem;
+}
+
+/* Estilo para el 'select' de DNI
+  Le damos un ancho fijo y quitamos el padding.
+*/
+.form-field-wrapper .form-select {
+  max-width: 90px;
+  font-weight: 500;
+  padding-left: 0;
+}
+
+/* Estilo para el prefijo '+51' */
+.form-field-wrapper .input-group-text {
+  font-weight: 500;
+  color: #212529;
+}
+
+/* Estilo para el botón de icono (ojo) */
+.form-field-wrapper .btn {
+  color: #6c757d; /* Color gris para el icono */
+}

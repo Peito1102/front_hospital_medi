@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginRequest } from '../entities/login-request.model';
 import { environment } from '../enviroments/environment';
 
@@ -8,18 +8,19 @@ import { environment } from '../enviroments/environment';
 export class AuthService {
   private apiUrl = `${environment.apiUrl}/login`;
 
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
+
   constructor(private http: HttpClient) {}
 
-  login(user: LoginRequest): Observable<HttpResponse<any>> {
-    return this.http.post<any>(
-      this.apiUrl,
-       user,
-      { observe: 'response' }
-    );
+  login(loginRequest: LoginRequest): Observable<any> {
+    return this.http.post<any>(this.apiUrl, loginRequest, { 
+      observe: 'response' 
+    });
   }
 
   saveToken(token: string) {
     localStorage.setItem('token', token);
+    this.isLoggedInSubject.next(true);
   }
 
   getToken(): string | null {
@@ -28,9 +29,15 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    this.isLoggedInSubject.next(false);
   }
 
   isLoggedIn(): boolean {
+    return this.isLoggedInSubject.value;
+  }
+
+  private hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
+  
 }

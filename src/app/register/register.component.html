@@ -1,0 +1,128 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7 col-md-10">
+      
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+
+        <div class="mb-4">
+          <label for="correo" class="form-label-custom">Correo</label>
+          <div class="form-field-wrapper">
+            <input 
+              type="email" 
+              class="form-control" 
+              id="correo"
+              name="correo"
+              placeholder="Ingresa un correo"
+              [(ngModel)]="formData.correo"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="nombre" class="form-label-custom">Nombre</label>
+          <div class="form-field-wrapper">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="nombre"
+              name="nombre"
+              placeholder="Ingresa un nombre"
+              [(ngModel)]="formData.nombre"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="apellidos" class="form-label-custom">Apellidos</label>
+          <div class="form-field-wrapper">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="apellidos"
+              name="apellidos"
+              placeholder="Ingresa apellidos"
+              [(ngModel)]="formData.apellidos"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="documento" class="form-label-custom">Tipo de documento</label>
+          <div class="input-group form-field-wrapper">
+            <select 
+              class="form-select" 
+              id="tipoDocumento"
+              name="tipoDocumento"
+              [(ngModel)]="formData.tipoDocumento"
+            >
+              <option value="DNI">DNI</option>
+              <option value="CE">CE</option>
+              <option value="PAS">PAS</option>
+            </select>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="documento"
+              name="documento"
+              placeholder="Ingresa un documento de identidad"
+              [(ngModel)]="formData.documento"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="celular" class="form-label-custom">Celular</label>
+          <div class="input-group form-field-wrapper">
+            <span class="input-group-text">+51</span>
+            <input 
+              type="tel" 
+              class="form-control" 
+              id="celular"
+              name="celular"
+              placeholder="Ingresa un celular"
+              [(ngModel)]="formData.celular"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="contrasena" class="form-label-custom">Contraseña</label>
+          <div class="input-group form-field-wrapper">
+            <input 
+              [type]="passwordFieldType"
+              class="form-control" 
+              id="contrasena"
+              name="contrasena"
+              placeholder="Ingresa una contraseña"
+              [(ngModel)]="formData.contrasena"
+              required
+            >
+            <button 
+              class="btn" 
+              type="button" 
+              (click)="togglePasswordVisibility()"
+            >
+              <i [class]="passwordIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="d-grid mt-5">
+          <button 
+            type="submit" 
+            class="btn btn-primary btn-lg"
+            [disabled]="!registerForm.form.valid"
+          >
+            Registrarse
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
