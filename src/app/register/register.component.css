@@ -80,3 +80,15 @@
 .form-field-wrapper .btn {
   color: #6c757d; /* Color gris para el icono */
 }
+
+/* Mueve el estilo del cursor aquí para un código más limpio */
+.input-group-text i {
+  cursor: pointer;
+  width: 1.25em; /* Asegura que el ícono tenga un ancho fijo */
+}
+
+/* Clases de Bootstrap para mostrar errores (opcional, pero recomendado) */
+.form-control.ng-invalid.ng-touched,
+.form-control.ng-invalid.ng-dirty {
+  border-color: #dc3545; /* Rojo de error */
+}

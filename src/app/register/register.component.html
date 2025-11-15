@@ -2,127 +2,92 @@
   <div class="row justify-content-center">
     <div class="col-lg-7 col-md-10">
       
-      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-        <div class="mb-4">
-          <label for="correo" class="form-label-custom">Correo</label>
-          <div class="form-field-wrapper">
-            <input 
-              type="email" 
-              class="form-control" 
-              id="correo"
-              name="correo"
-              placeholder="Ingresa un correo"
-              [(ngModel)]="formData.correo"
-              required
-            >
-          </div>
-        </div>
+  <div class="mb-3">
+    <label for="correo" class="form-label">Correo Electrónico</label>
+    <input type="email" id="correo" formControlName="correo" class="form-control" placeholder="Ingresa tu correo">
+    
+    <div *ngIf="f['correo'].invalid && (f['correo'].dirty || f['correo'].touched)" class="text-danger mt-1">
+      <div *ngIf="f['correo'].errors?.['required']">El correo es obligatorio.</div>
+      <div *ngIf="f['correo'].errors?.['email']">El formato del correo no es válido.</div>
+    </div>
+  </div>
 
-        <div class="mb-4">
-          <label for="nombre" class="form-label-custom">Nombre</label>
-          <div class="form-field-wrapper">
-            <input 
-              type="text" 
-              class="form-control" 
-              id="nombre"
-              name="nombre"
-              placeholder="Ingresa un nombre"
-              [(ngModel)]="formData.nombre"
-              required
-            >
-          </div>
-        </div>
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="Ingresa tu nombre">
+    <div *ngIf="f['nombre'].invalid && (f['nombre'].dirty || f['nombre'].touched)" class="text-danger mt-1">
+      <div *ngIf="f['nombre'].errors?.['required']">El nombre es obligatorio.</div>
+    </div>
+  </div>
 
-        <div class="mb-4">
-          <label for="apellidos" class="form-label-custom">Apellidos</label>
-          <div class="form-field-wrapper">
-            <input 
-              type="text" 
-              class="form-control" 
-              id="apellidos"
-              name="apellidos"
-              placeholder="Ingresa apellidos"
-              [(ngModel)]="formData.apellidos"
-              required
-            >
-          </div>
-        </div>
+  <div class="mb-3">
+    <label for="apellidos" class="form-label">Apellidos</label>
+    <input type="text" id="apellidos" formControlName="apellidos" class="form-control" placeholder="Ingresa tus apellidos">
+     <div *ngIf="f['apellidos'].invalid && (f['apellidos'].dirty || f['apellidos'].touched)" class="text-danger mt-1">
+      <div *ngIf="f['apellidos'].errors?.['required']">Los apellidos son obligatorios.</div>
+    </div>
+  </div>
 
-        <div class="mb-4">
-          <label for="documento" class="form-label-custom">Tipo de documento</label>
-          <div class="input-group form-field-wrapper">
-            <select 
-              class="form-select" 
-              id="tipoDocumento"
-              name="tipoDocumento"
-              [(ngModel)]="formData.tipoDocumento"
-            >
-              <option value="DNI">DNI</option>
-              <option value="CE">CE</option>
-              <option value="PAS">PAS</option>
-            </select>
-            <input 
-              type="text" 
-              class="form-control" 
-              id="documento"
-              name="documento"
-              placeholder="Ingresa un documento de identidad"
-              [(ngModel)]="formData.documento"
-              required
-            >
-          </div>
-        </div>
+  <div class="mb-3">
+    <label for="dni" class="form-label">DNI</label>
+    <input type="text" 
+    id="dni" formControlName="dni" 
+    class="form-control" 
+    placeholder="Ingresa tu dni" 
+    (input)="onNumericInput($event, 'dni', 8)">
+    <div *ngIf="f['dni'].invalid && (f['dni'].dirty || f['dni'].touched)" class="text-danger mt-1">
+      <div *ngIf="f['dni'].errors?.['required']">El documento es obligatorio.</div>
+      <div *ngIf="f['dni'].errors?.['pattern']">El documento solo debe contener números.</div>
+      <div *ngIf="f['dni'].errors?.['minlength'] || f['dni'].errors?.['maxlength']">
+        El DNI debe tener 8 dígitos.
+      </div>
+    </div>
+  </div>
+  
+  <div class="mb-3">
+    <label for="celular" class="form-label">Celular</label>
+    <input type="tel" 
+    id="celular" formControlName="celular" 
+    class="form-control" 
+    placeholder="Ingresa tu número de celular" 
+    (input)="onNumericInput($event, 'celular', 9)">
+     <div *ngIf="f['celular'].invalid && (f['celular'].dirty || f['celular'].touched)" class="text-danger mt-1">
+      <div *ngIf="f['celular'].errors?.['required']">El celular es obligatorio.</div>
+      <div *ngIf="f['celular'].errors?.['pattern']">El celular solo debe contener números.</div>
+      <div *ngIf="f['celular'].errors?.['minlength'] || f['celular'].errors?.['maxlength']">
+        El celular debe tener 9 dígitos.
+      </div>
+    </div>
+  </div>
 
-        <div class="mb-4">
-          <label for="celular" class="form-label-custom">Celular</label>
-          <div class="input-group form-field-wrapper">
-            <span class="input-group-text">+51</span>
-            <input 
-              type="tel" 
-              class="form-control" 
-              id="celular"
-              name="celular"
-              placeholder="Ingresa un celular"
-              [(ngModel)]="formData.celular"
-              required
-            >
-          </div>
-        </div>
+  <div class="mb-3">
+    <label for="contrasena" class="form-label">Contraseña</label>
+    <div class="input-group">
+      <input 
+        [type]="passwordFieldType" 
+        id="contrasena" 
+        formControlName="contrasena" 
+        class="form-control"
+        placeholder="Ingresa tu contraseña"
+        >
+      <span class="input-group-text" style="cursor: pointer;">
+        <i [class]="passwordIcon" (click)="togglePasswordVisibility()"></i>
+      </span>
+    </div>
+    <div *ngIf="f['contrasena'].invalid && (f['contrasena'].dirty || f['contrasena'].touched)" class="text-danger mt-1">
+      <div *ngIf="f['contrasena'].errors?.['required']">La contraseña es obligatoria.</div>
+      <div *ngIf="f['contrasena'].errors?.['minlength']">
+        La contraseña debe tener al menos 6 caracteres.
+      </div>
+    </div>
+  </div>
 
-        <div class="mb-4">
-          <label for="contrasena" class="form-label-custom">Contraseña</label>
-          <div class="input-group form-field-wrapper">
-            <input 
-              [type]="passwordFieldType"
-              class="form-control" 
-              id="contrasena"
-              name="contrasena"
-              placeholder="Ingresa una contraseña"
-              [(ngModel)]="formData.contrasena"
-              required
-            >
-            <button 
-              class="btn" 
-              type="button" 
-              (click)="togglePasswordVisibility()"
-            >
-              <i [class]="passwordIcon"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="d-grid mt-5">
-          <button 
-            type="submit" 
-            class="btn btn-primary btn-lg"
-            [disabled]="!registerForm.form.valid"
-          >
-            Registrarse
-          </button>
-        </div>
-
-      </form>
+  <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary w-100">
+    Registrar
+  </button>
+</form>
     </div>
   </div>
 </div>
